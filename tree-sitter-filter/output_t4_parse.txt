@@ -1,0 +1,24 @@
+﻿(query [0, 0] - [0, 117]
+  (and_expression [0, 0] - [0, 117]
+    left: (and_expression [0, 0] - [0, 88]
+      left: (and_expression [0, 0] - [0, 57]
+        left: (comparison [0, 0] - [0, 15]
+          field: (identifier [0, 0] - [0, 6])
+          value: (string [0, 9] - [0, 15]))
+        right: (parenthesized [0, 20] - [0, 57]
+          (or_expression [0, 21] - [0, 56]
+            left: (comparison [0, 21] - [0, 33]
+              field: (identifier [0, 21] - [0, 29])
+              value: (number [0, 32] - [0, 33]))
+            right: (not_expression [0, 37] - [0, 56]
+              operand: (comparison [0, 41] - [0, 56]
+                field: (identifier [0, 41] - [0, 49])
+                value: (boolean [0, 52] - [0, 56]))))))
+      right: (in_expression [0, 62] - [0, 88]
+        field: (identifier [0, 62] - [0, 66])
+        values: (value_list [0, 70] - [0, 88]
+          (string [0, 71] - [0, 78])
+          (string [0, 80] - [0, 87]))))
+    right: (comparison [0, 93] - [0, 117]
+      field: (identifier [0, 93] - [0, 98])
+      value: (string [0, 108] - [0, 117]))))
