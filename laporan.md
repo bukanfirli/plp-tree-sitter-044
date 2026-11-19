@@ -35,3 +35,16 @@ Program `jelajah.py` menelusuri node bernama secara rekursif (*preorder DFS*) me
 ### 2. Kendala 
 * **Kendala:** Jika melakukan perulangan langsung pada `node.named_children`, indeks yang dihasilkan tidak cocok dengan `node.field_name_for_child(i)` karena metode tersebut menghitung indeks dari `node.children` (termasuk node anonim). 
 * **Solusi:** Melakukan iterasi pada `enumerate(node.children)` lalu memfilter dengan `if child.is_named:`.
+
+---
+
+## Tugas 3: Query & Pattern Matching (`.scm`)
+
+### 1. Hasil Query & Verifikasi Manual
+Pengujian dilakukan pada file `contoh_t3.py` menggunakan 3 pola query:
+1. **Query Fungsi & Parameter (`fungsi.scm`):** Menggunakan `matches()` pada `QueryCursor` untuk memasangkan `@nama` dan `named_child_count` dari `@params`[cite: 2]. Hasil: `sapa` (1), `hitung_luas` (3), dan `tanpa_param` (0) — cocok 100% dengan hitungan manual[cite: 2].
+2. **Query Pemanggilan `print` (`print.scm`):** Menggunakan predikat `(#eq? @fn "print")`[cite: 2]. Berhasil menangkap 3 pemanggilan `print(...)` pada baris 7, 12, dan 16 tanpa menangkap panggilan fungsi `sapa("Budi")` pada baris 18.
+3. **Query Import Modul (`import.scm`):** Menangkap `(import_statement)` (termasuk `aliased_import` seperti `import sys as system`) dan `(import_from_statement)` dengan `module_name:`. Berhasil menangkap 4 modul (`os`, `sys`, `pathlib`, `typing`).
+
+![Output Query Tugas 3](bukti ss/t3_hasil_query.png)
+
