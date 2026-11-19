@@ -74,3 +74,19 @@ Aturan pewarnaan sintaks ditulis di `tree-sitter-filter/queries/highlights.scm` 
 
 ### 2. Kendala 
 * **Kendala:** Saat pertama kali menjalankan `tree-sitter parse`/`highlight`, CLI menampilkan peringatan bahwa `parser-directories` belum dikonfigurasi, dan penulisan `config.json` dengan `Out-File -Encoding utf8` di PowerShell sempat menyisipkan UTF-8 BOM sehingga JSON gagal dibaca. **Solusi:** Menulis ulang `config.json` menggunakan `[System.IO.File]::WriteAllText` tanpa BOM dan mendaftarkan folder induk `plp-tree-sitter-044`.
+
+---
+
+## Tugas 6: Mini Proyek CLI Pemeriksa Kode (`cek/cek.py`)
+
+### 1. Hasil Pengujian Lokal & Repositori Nyata
+Tool `cek.py` menggabungkan `QueryCursor` (untuk mencari komentar `TODO|FIXME` dan mengukur rentang baris `function_definition`) serta penelusuran rekursif untuk menemukan baris pertama `is_error`/`is_missing` saat `tree.root_node.has_error` bernilai `True`.
+
+* **Uji Folder `uji/`:** Berhasil mendeteksi 2 komentar TODO/FIXME pada `todo.py`, 1 fungsi panjang (`proses_data_panjang`, 32 baris) pada `panjang.py`, dan 1 error sintaks pada `rusak.py` baris 1.
+* **Uji Repositori Nyata (`psf/requests`):** Berhasil memindai seluruh file `.py` di repositori open source dan mencocokkan temuan komentar `TODO` serta fungsi panjang secara manual pada 2 file acak (`src/requests/models.py` dan `src/requests/sessions.py`).
+
+![Hasil Uji Lokal cek.py](bukti ss/t6_uji.png)
+![Hasil Uji Repo Nyata](bukti ss/t6_repo_nyata.png)
+
+### 2. Kendala & Catatan Penggunaan AI
+* **Kendala:** Saat memindai folder proyek yang memiliki virtual environment (`venv/`) atau `.git/`, skrip ikut memeriksa ribuan file library pihak ketiga sehingga proses berjalan lambat. **Solusi:** Menambahkan filter `ABAIKAN_FOLDER` untuk melewati direktori `venv`, `.venv`, `.git`, dan `__pycache__`.
