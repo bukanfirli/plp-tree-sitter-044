@@ -1,0 +1,3 @@
+﻿Fungsi 'sapa' -> 1 parameter
+Fungsi 'hitung_luas' -> 3 parameter
+Fungsi 'tanpa_param' -> 0 parameter

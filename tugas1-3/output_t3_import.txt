@@ -1,0 +1,4 @@
+﻿@modul  baris 1: os
+@modul  baris 2: sys
+@modul  baris 4: typing
+@modul  baris 3: pathlib

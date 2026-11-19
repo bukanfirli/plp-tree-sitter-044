@@ -1,0 +1,6 @@
+﻿@fn  baris 7: print
+@fn  baris 12: print
+@fn  baris 16: print
+@args  baris 7: ("Halo", nama)
+@args  baris 12: ("Volume:", volume)
+@args  baris 16: ("Selesai")
