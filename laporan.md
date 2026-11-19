@@ -62,3 +62,15 @@ Grammar `filter` dibangun bertahap di `tree-sitter-filter/grammar.js` untuk mend
 ### 2. Kendala 
 * **Kendala 1 (`Unresolved conflict`):** Saat menambahkan `or_expression` dan `and_expression` tanpa `prec.left`, `tree-sitter generate` menolak karena ambiguitas pengelompokan `a = 1 or b = 2 and c = 3`. **Solusi:** Memberikan `prec.left(1, ...)` untuk `or_expression` dan `prec.left(2, ...)` untuk `and_expression` agar `and` mengikat lebih kuat daripada `or`.
 * **Kendala 2 (Keyword terbaca sebagai `identifier`):** Kata kunci `and` dan `or` sempat tertangkap sebagai `identifier`. **Solusi:** Menambahkan properti `word: $ => $.identifier` pada konfigurasi grammar.
+
+---
+
+## Tugas 5: Syntax Highlighting (`queries/highlights.scm`)
+
+### 1. Pemetaan Capture Highlight
+Aturan pewarnaan sintaks ditulis di `tree-sitter-filter/queries/highlights.scm` dengan memetakan token ke standar capture tree-sitter: kata kunci (`and`, `or`, `not`, `in`, `contains`) ke `@keyword`, operator perbandingan ke `@operator`, literal ke `@string`/`@number`/`@constant.builtin`, serta nama kolom pada `comparison` dan `in_expression` ke `@property`.
+
+![Hasil Highlight DSL Filter](bukti ss/t5_highlight.png)
+
+### 2. Kendala 
+* **Kendala:** Saat pertama kali menjalankan `tree-sitter parse`/`highlight`, CLI menampilkan peringatan bahwa `parser-directories` belum dikonfigurasi, dan penulisan `config.json` dengan `Out-File -Encoding utf8` di PowerShell sempat menyisipkan UTF-8 BOM sehingga JSON gagal dibaca. **Solusi:** Menulis ulang `config.json` menggunakan `[System.IO.File]::WriteAllText` tanpa BOM dan mendaftarkan folder induk `plp-tree-sitter-044`.
