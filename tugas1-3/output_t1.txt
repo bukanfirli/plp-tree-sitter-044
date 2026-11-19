@@ -1,0 +1,23 @@
+﻿=== FUNGSI ===
+(module (function_definition name: (identifier) parameters: (parameters (identifier)) body: (block (return_statement (binary_operator left: (string (string_start) (string_content) (string_end)) right: (identifier))))))
+
+=== IF-ELSE ===
+(module (if_statement condition: (comparison_operator (identifier) (integer)) consequence: (block (expression_statement (assignment left: (identifier) right: (integer)))) alternative: (else_clause body: (block (expression_statement (assignment left: (identifier) right: (unary_operator argument: (integer))))))))
+
+=== KELAS ===
+(module (class_definition name: (identifier) body: (block (function_definition name: (identifier) parameters: (parameters (identifier) (identifier) (identifier)) body: (block (return_statement (binary_operator left: (identifier) right: (identifier))))))))
+
+=== RUSAK ===
+(module (ERROR (identifier) (parameters (identifier)) (identifier)))
+
+=== NODE ANONIM PADA FUNGSI ===
+'def'           -> anonim
+'identifier'    -> bernama
+'parameters'    -> bernama
+':'             -> anonim
+'block'         -> bernama
+
+=== NODE ANONIM PADA PARAMETERS ===
+'('             -> anonim
+'identifier'    -> bernama
+')'             -> anonim
