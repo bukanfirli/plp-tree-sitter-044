@@ -32,6 +32,6 @@ Program `jelajah.py` menelusuri node bernama secara rekursif (*preorder DFS*) me
 ![Output Jelajah File Kecil](bukti ss/t2_kecil.png)
 ![Output Jelajah File Besar >=100 Baris](bukti ss/t2_besar.png)
 
-### 2. Kendala & Catatan Penggunaan AI
-* **Kendala:** Jika melakukan perulangan langsung pada `node.named_children`, indeks yang dihasilkan tidak cocok dengan `node.field_name_for_child(i)` karena metode tersebut menghitung indeks dari `node.children` (termasuk node anonim)[cite: 2]. **Solusi:** Melakukan iterasi pada `enumerate(node.children)` lalu memfilter dengan `if child.is_named:`[cite: 2].
-* **Catatan AI:** Meminta AI menyusun kerangka fungsi rekursif `jelajah()`[cite: 2]. Diverifikasi dengan membandingkan output `kecil.py` (`x = 1`) dan file `file_besar.py` (>100 baris) terhadap struktur tree-sitter yang diharapkan[cite: 2].
+### 2. Kendala 
+* **Kendala:** Jika melakukan perulangan langsung pada `node.named_children`, indeks yang dihasilkan tidak cocok dengan `node.field_name_for_child(i)` karena metode tersebut menghitung indeks dari `node.children` (termasuk node anonim). 
+* **Solusi:** Melakukan iterasi pada `enumerate(node.children)` lalu memfilter dengan `if child.is_named:`.
