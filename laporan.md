@@ -1,7 +1,7 @@
 # Laporan Praktikum Tree-sitter
 - **Nama:** Firliana Febrina
 - **NIM:** 251524044
-- **Kelas:** 1B D4 Teknik Informatika
+- **Kelas:** 2B D4 Teknik Informatika
 
 ---
 
